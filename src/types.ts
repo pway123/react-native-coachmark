@@ -6,6 +6,7 @@ export interface CoachmarkProps {
   autoShow?: boolean;
   onHide?: () => void;
   onShow?: () => void;
+  onPressOutside?: () => void;
   isAnchorReady?: boolean;
   renderArrow?: CoachmarkViewProps['renderArrow'];
   renderContent?: CoachmarkViewProps['renderContent'];
