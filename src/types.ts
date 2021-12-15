@@ -13,6 +13,8 @@ export interface CoachmarkProps {
   accessibilityLabel?: string;
   testID?: string;
   contentContainerStyle?: StyleProp<ViewStyle>;
+  backdropColor?: string;
+  backdropOpacity?: number;
 }
 
 export enum CoachmarkPosition {

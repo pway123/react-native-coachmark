@@ -156,14 +156,21 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
   };
 
   render() {
-    const { contentContainerStyle, accessibilityLabel, testID, onPressOutside } = this.props;
+    const {
+      contentContainerStyle,
+      accessibilityLabel,
+      testID,
+      onPressOutside,
+      backdropColor,
+      backdropOpacity,
+    } = this.props;
     return (
       <React.Fragment>
         <View ref={this.view} style={contentContainerStyle} onLayout={this._measureLayout}>
           {React.Children.only(this.props.children)}
         </View>
         <Modal animationType="fade" transparent visible={this.state.visible}>
-          <View style={styles.backdrop} />
+          <View style={[styles.backdrop, { backgroundColor: backdropColor, opacity: backdropOpacity }]} />
           {this.state.position === 'bottom' ? (
             <React.Fragment>
               {this._renderCoachmark()}
