@@ -10,6 +10,7 @@ export interface CoachmarkProps {
   isAnchorReady?: boolean;
   renderArrow?: CoachmarkViewProps['renderArrow'];
   renderContent?: CoachmarkViewProps['renderContent'];
+  renderChildren?: () => React.ReactElement;
   accessibilityLabel?: string;
   testID?: string;
   contentContainerStyle?: StyleProp<ViewStyle>;

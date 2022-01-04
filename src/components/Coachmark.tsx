@@ -127,7 +127,9 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
   };
 
   _renderChildren = () => {
-    return <View style={[styles.child, this.state.childStyle]}>{this.props.children}</View>;
+    return (
+      <View style={[styles.child, this.state.childStyle]}>{this.props.renderChildren?.() ?? this.props.children}</View>
+    );
   };
 
   _renderCoachmark = () => {
