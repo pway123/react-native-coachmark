@@ -15,6 +15,7 @@ export interface CoachmarkProps {
   contentContainerStyle?: StyleProp<ViewStyle>;
   backdropColor?: string;
   backdropOpacity?: number;
+  coachmarkZindex?: number;
 }
 
 export enum CoachmarkPosition {

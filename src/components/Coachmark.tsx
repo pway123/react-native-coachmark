@@ -135,6 +135,7 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
       <View
         style={{
           position: 'absolute',
+          zIndex: this.props.coachmarkZindex ?? 1,
           left: 0,
           right: 0,
           ...(this.state.position === CoachmarkPosition.TOP
