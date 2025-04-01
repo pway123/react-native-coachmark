@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Modal, StyleSheet, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import { View, Modal, StyleSheet, Dimensions, TouchableWithoutFeedback, SafeAreaView, Platform } from 'react-native';
 
 import CoachmarkView from './CoachmarkView';
 import { CoachmarkProps, CoachmarkPosition } from '../types';
@@ -29,6 +29,7 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
 
   constructor(props) {
     super(props);
+    this.isModalTranslucentStatusBar = Platform.OS === 'android' && Platform.Version >= 35;
     this.state = {
       visible: false,
       childStyle: {
@@ -168,11 +169,11 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
       backdropOpacity,
     } = this.props;
     return (
-      <React.Fragment>
+      <SafeAreaView style={{ flex: 1 }}>
         <View ref={this.view} style={contentContainerStyle} onLayout={this._measureLayout}>
           {React.Children.only(this.props.children)}
         </View>
-        <Modal animationType="fade" transparent visible={this.state.visible}>
+        <Modal animationType="fade" transparent visible={this.state.visible} statusBarTranslucent={this.isModalTranslucentStatusBar}>
           <View style={[styles.backdrop, { backgroundColor: backdropColor, opacity: backdropOpacity }]} />
           {this.state.position === 'bottom' ? (
             <React.Fragment>
@@ -193,7 +194,7 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
             <View style={StyleSheet.absoluteFill} />
           </TouchableWithoutFeedback>
         </Modal>
-      </React.Fragment>
+      </SafeAreaView>
     );
   }
 }
